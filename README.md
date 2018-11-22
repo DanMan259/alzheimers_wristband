@@ -1,4 +1,4 @@
-# alzheimers_wristband
+# Alzheimers Wristband
 Project for developing a wristband IoT system, that will assist nursing homes in tracking Alzheimers patients.
 
 The wristband prototype uses the ESP8266 wifi board for hosting a websocket that the server pings to get longitude and latitude. The code for this can be found in the esp8266 directory
