@@ -22,7 +22,7 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 //Credentials for Google GeoLocation API...
 const char* Host = "www.googleapis.com";
 String thisPage = "/geolocation/v1/geolocate?key=";
-String key = "AIzaSyDgCtMzBVCRWu0N9Hy4Vd5Mj5LMc87eYRA";
+String key ="";
 
 char myssid[] = "TP-LINK_5BC8";         // your network SSID (name)
 char mypass[] = "09918467";          // your network password
