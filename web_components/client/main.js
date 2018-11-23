@@ -1,6 +1,6 @@
 //import { Template } from 'meteor/templating';
 
-//import geolib from 'geolib';
+
 
 if (Meteor.isClient) {
     var MAP_ZOOM = 15;
@@ -56,6 +56,24 @@ if (Meteor.isClient) {
             }
         }
     });
+    /*
+    //THIS IS THE DISTANCE FUNCTION
+ import geolib from 'geolib';
+navigator.geolocation.getCurrentPosition(
+    function (position) {
+        alert('Within Radius: ' + geolib.isPointInCircle(position.coords, {
+            latitude: 51.525,
+            longitude: 7.4575
+        }, 300));
+    },
+    function () {
+        alert('Position could not be determined.')
+    },
+    {
+        enableHighAccuracy: true
+    }
+)
+*/
 }
 
 
