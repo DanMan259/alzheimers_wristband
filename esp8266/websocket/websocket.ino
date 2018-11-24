@@ -12,7 +12,15 @@
 #include <WebSocketsServer.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
+#include <NTPClient.h>
 #include <Hash.h>
+
+#define NTP_OFFSET   60 * 60      // In seconds
+#define NTP_INTERVAL 60 * 1000    // In miliseconds
+#define NTP_ADDRESS  "europe.pool.ntp.org"
+
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, NTP_ADDRESS, NTP_OFFSET, NTP_INTERVAL);
 
 ESP8266WiFiMulti WiFiMulti;
 
@@ -22,7 +30,7 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 //Credentials for Google GeoLocation API...
 const char* Host = "www.googleapis.com";
 String thisPage = "/geolocation/v1/geolocate?key=";
-String key ="";
+String key = "AIzaSyDgCtMzBVCRWu0N9Hy4Vd5Mj5LMc87eYRA";
 
 char myssid[] = "TP-LINK_5BC8";         // your network SSID (name)
 char mypass[] = "09918467";          // your network password
@@ -32,41 +40,7 @@ double longitude   = 0.0;
 double accuracy    = 0.0;
 
 String jsonString = "{\n";
-
-
-void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length) {
-
-    switch(type) {
-        case WStype_DISCONNECTED:
-            Serial.printf("[%u] Disconnected!\n", num);
-            break;
-        case WStype_CONNECTED: {
-            IPAddress ip = webSocket.remoteIP(num);
-            Serial.printf("[%u] Connected from %d.%d.%d.%d url: %s\n", num, ip[0], ip[1], ip[2], ip[3], payload);
-
-            // send message to client
-            webSocket.sendTXT(num, "{ patient : 0001 , location : { longitude: " + (String)longitude + " , latitude: " +  (String)latitude + " , accuracy: " + (String)accuracy + " }}");
-        }
-            break;
-            /*
-        case WStype_TEXT:
-            Serial.printf("[%u] get Text: %s\n", num, payload);
-            if(payload[0] == '#') {
-                // we get RGB data
-
-                // decode rgb data
-                uint32_t rgb = (uint32_t) strtol((const char *) &payload[1], NULL, 16);
-
-                analogWrite(LED_RED, ((rgb >> 16) & 0xFF));
-                analogWrite(LED_GREEN, ((rgb >> 8) & 0xFF));
-                analogWrite(LED_BLUE, ((rgb >> 0) & 0xFF));
-            }
-
-            break;*/
-    }
-}
-
-
+String jsonResponse = "{}";
 
 void setup() {
     Serial.begin(115200);
@@ -82,38 +56,30 @@ void setup() {
     while(WiFiMulti.run() != WL_CONNECTED) {
         delay(100);
     }
-
-    // start webSocket server
-    webSocket.begin();
-    webSocket.onEvent(webSocketEvent);
-
-    if(MDNS.begin("esp8266")) {
-        Serial.println("MDNS responder started");
-    }
+    timeClient.begin();
 
     // handle index
     server.on("/", []() {
         // send index.html
-        server.send(200, "text/html", "{ patient : 0001 , location : { longitude: " + (String)longitude + " , latitude: " +  (String)latitude + " , accuracy: " + (String)accuracy + " }}");
+        server.send(200, "text/json", jsonResponse );
     });
 
     server.begin();
 
     // Add service to MDNS
     MDNS.addService("http", "tcp", 80);
-    MDNS.addService("ws", "tcp", 81);
-
 }
 
 unsigned long last_10sec = 0;
-unsigned int counter = 0;
+
 
 void loop() {
+    timeClient.update();
     unsigned long t = millis();
+    unsigned long epcohTime =  timeClient.getEpochTime();
     int n = WiFi.scanNetworks();
     DynamicJsonBuffer jsonBuffer;
     WiFiClientSecure client;
-    webSocket.loop();
     server.handleClient();
 
     jsonString = "{\n";
@@ -166,18 +132,6 @@ void loop() {
         accuracy   = root["accuracy"];
       }
     }
-    
-    if((t - last_10sec) > 10 * 1000) {
-        counter++;
-        bool ping = (counter % 2);
-        int i = webSocket.connectedClients(ping);
-        Serial.printf("%d Connected websocket clients ping: %d\n", i, ping);
-        Serial.print("Latitude = ");
-        Serial.println(latitude, 6);
-        Serial.print("Longitude = ");
-        Serial.println(longitude, 6);
-        Serial.print("Accuracy = ");
-        Serial.println(accuracy);
-        last_10sec = millis();
-    }
+    jsonResponse = "{\"PatientID\":1,\"time\":"+ (String)epcohTime +",\"location\":{\"Coordinates\":{\"Longitude\":" + (String)longitude + ",\"Latitude\":" + (String)latitude + "},\"Accuracy\" : " + (String)accuracy + "}}";
+    Serial.println(jsonResponse);
 }
