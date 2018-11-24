@@ -3,7 +3,7 @@ import { Patients } from "../imports/api/patients";
 
 
 Meteor.methods({
-    PatientsInfo: (PatientID) => {
-        return Patients.findOne({"PatientID" : PatientID});
+    PatientsInfo: () => {
+        return Patients.find({PatientID:1});
     }
 });

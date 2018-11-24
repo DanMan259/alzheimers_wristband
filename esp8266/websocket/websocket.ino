@@ -32,8 +32,12 @@ const char* Host = "www.googleapis.com";
 String thisPage = "/geolocation/v1/geolocate?key=";
 String key = "AIzaSyDgCtMzBVCRWu0N9Hy4Vd5Mj5LMc87eYRA";
 
-char myssid[] = "TP-LINK_5BC8";         // your network SSID (name)
-char mypass[] = "09918467";          // your network password
+//char myssid[] = "TP-LINK_5BC8";         // your network SSID (name)
+//char mypass[] = "09918467";          // your network password
+
+char myssid[] = "GoatHouse";         // your network SSID (name)
+char mypass[] = "Goat123!@#";          // your network password
+
 
 double latitude    = 0.0;
 double longitude   = 0.0;
@@ -51,7 +55,7 @@ void setup() {
         delay(1000);
     }
 
-    WiFiMulti.addAP("TP-LINK_5BC8", "09918467");
+    WiFiMulti.addAP(myssid, mypass);
 
     while(WiFiMulti.run() != WL_CONNECTED) {
         delay(100);

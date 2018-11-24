@@ -40,6 +40,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/check/1.3.1/web.browser/isPlainObject.js" />
         <item url="file://$USER_HOME$/.meteor/packages/check/1.3.1/web.browser/match.js" />
         <item url="file://$USER_HOME$/.meteor/packages/check/1.3.1/web.browser/match_test.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/dburles_google-maps/1.1.5/web.browser/google-maps.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-client/2.3.3/web.browser/client/client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-client/2.3.3/web.browser/client/client_convenience.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-client/2.3.3/web.browser/common/MethodInvoker.js" />
@@ -130,6 +131,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/logging/1.1.20/web.browser/logging_cordova.js" />
         <item url="file://$USER_HOME$/.meteor/packages/logging/1.1.20/web.browser/logging_test.js" />
         <item url="file://$USER_HOME$/.meteor/packages/materialize_materialize/0.100.2/web.browser/dist/js/materialize.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/mdg_geolocation/1.3.0/web.browser/geolocation.js" />
         <item url="file://$USER_HOME$/.meteor/packages/minifier-css/1.3.1/web.browser/minifier-tests.js" />
         <item url="file://$USER_HOME$/.meteor/packages/minifier-css/1.3.1/web.browser/minifier.js" />
         <item url="file://$USER_HOME$/.meteor/packages/minifier-css/1.3.1/web.browser/urlrewriting-tests.js" />
@@ -247,6 +249,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/check/1.3.1/web.browser/isPlainObject.js" />
       <root url="file://$USER_HOME$/.meteor/packages/check/1.3.1/web.browser/match.js" />
       <root url="file://$USER_HOME$/.meteor/packages/check/1.3.1/web.browser/match_test.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/dburles_google-maps/1.1.5/web.browser/google-maps.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-client/2.3.3/web.browser/client/client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-client/2.3.3/web.browser/client/client_convenience.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-client/2.3.3/web.browser/common/MethodInvoker.js" />
@@ -337,6 +340,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/logging/1.1.20/web.browser/logging_cordova.js" />
       <root url="file://$USER_HOME$/.meteor/packages/logging/1.1.20/web.browser/logging_test.js" />
       <root url="file://$USER_HOME$/.meteor/packages/materialize_materialize/0.100.2/web.browser/dist/js/materialize.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/mdg_geolocation/1.3.0/web.browser/geolocation.js" />
       <root url="file://$USER_HOME$/.meteor/packages/minifier-css/1.3.1/web.browser/minifier-tests.js" />
       <root url="file://$USER_HOME$/.meteor/packages/minifier-css/1.3.1/web.browser/minifier.js" />
       <root url="file://$USER_HOME$/.meteor/packages/minifier-css/1.3.1/web.browser/urlrewriting-tests.js" />
