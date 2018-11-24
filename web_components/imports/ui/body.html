@@ -1,0 +1,25 @@
+<template name="layout">
+    <body>
+    <div class="content">
+        <div class="row">
+            {{> navigation}}
+        </div>
+        <div id="main" class="row">
+            {{PatientInfo}}
+            {{> contents}}
+        </div>
+    </div>
+    </body>
+</template>
+
+<template name="contents">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div class="first-section">
+        <div class="container">
+            <input type="text" name="search" placeholder="Search..">
+        </div>
+    </div>
+    <br><br>
+    {{> map}}
+</template>
