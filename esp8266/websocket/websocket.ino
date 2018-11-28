@@ -35,8 +35,8 @@ String key = "AIzaSyDgCtMzBVCRWu0N9Hy4Vd5Mj5LMc87eYRA";
 //char myssid[] = "TP-LINK_5BC8";         // your network SSID (name)
 //char mypass[] = "09918467";          // your network password
 
-char myssid[] = "GoatHouse";         // your network SSID (name)
-char mypass[] = "Goat123!@#";          // your network password
+char myssid[] = "TP-LINK_5BC8";         // your network SSID (name)
+char mypass[] = "09918467";          // your network password
 
 
 double latitude    = 0.0;
@@ -131,11 +131,12 @@ void loop() {
       String line = client.readStringUntil('\r');
       JsonObject& root = jsonBuffer.parseObject(line);
       if (root.success()) {
-        latitude    = root["location"]["lat"];
-        longitude   = root["location"]["lng"];
+        latitude    = float(root["location"]["lat"])*1000000.0;
+        longitude   = float(root["location"]["lng"])*1000000.0;
         accuracy   = root["accuracy"];
       }
     }
+  
     jsonResponse = "{\"PatientID\":1,\"time\":"+ (String)epcohTime +",\"location\":{\"Coordinates\":{\"Longitude\":" + (String)longitude + ",\"Latitude\":" + (String)latitude + "},\"Accuracy\" : " + (String)accuracy + "}}";
     Serial.println(jsonResponse);
 }

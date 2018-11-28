@@ -1,0 +1,23 @@
+<template name="patientInfo">
+    <span style='font-weight: bold;'>PatientID:</span> {{patientData.PatientID}}
+    <br>
+    <span style='font-weight: bold;'>Patients Current Coodinates:</span>
+    <br>
+    <p style="padding-left:5em;"><span style='font-weight: bold;'>Latitude:</span> {{patientData.latitude}}</p>
+    <p style="padding-left:5em;"><span style='font-weight: bold;'>Longitude:</span> {{patientData.longitude}}</p>
+    <span style='font-weight: bold;'>Location Accuracy:</span> {{patientData.accuracy}}
+    <br>
+    <span style='font-weight: bold;'>Time when Located:</span> {{patientData.time}}
+    <br>
+    {{#if (patientData.perimeter)}}
+        <h4 class="center-align"><span style='font-weight: bold;'>The Patient is within the perimeter</span></h4>
+    {{else}}
+        {{#if (patientData.initialChange)}}
+            {{#if (patientData.PerimeterRadius)}}
+                <h4 class="center-align"><span style='font-weight: bold;'>The Patient is not in the perimeter</span></h4>
+            {{else}}
+                <h4 class="center-align"><span style='font-weight: bold;'>Choose a Perimeter Radius</span></h4>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+</template>

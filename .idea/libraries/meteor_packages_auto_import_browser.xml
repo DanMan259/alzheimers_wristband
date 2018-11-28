@@ -166,6 +166,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/reload/1.2.0/web.browser/reload.js" />
         <item url="file://$USER_HOME$/.meteor/packages/reload/1.2.0/web.browser/reload_tests.js" />
         <item url="file://$USER_HOME$/.meteor/packages/retry/1.1.0/web.browser/retry.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/session/1.1.8/web.browser/session.js" />
         <item url="file://$USER_HOME$/.meteor/packages/socket-stream-client/0.2.2/web.browser/browser.js" />
         <item url="file://$USER_HOME$/.meteor/packages/socket-stream-client/0.2.2/web.browser/client-tests.js" />
         <item url="file://$USER_HOME$/.meteor/packages/socket-stream-client/0.2.2/web.browser/common.js" />
@@ -375,6 +376,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/reload/1.2.0/web.browser/reload.js" />
       <root url="file://$USER_HOME$/.meteor/packages/reload/1.2.0/web.browser/reload_tests.js" />
       <root url="file://$USER_HOME$/.meteor/packages/retry/1.1.0/web.browser/retry.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/session/1.1.8/web.browser/session.js" />
       <root url="file://$USER_HOME$/.meteor/packages/socket-stream-client/0.2.2/web.browser/browser.js" />
       <root url="file://$USER_HOME$/.meteor/packages/socket-stream-client/0.2.2/web.browser/client-tests.js" />
       <root url="file://$USER_HOME$/.meteor/packages/socket-stream-client/0.2.2/web.browser/common.js" />
