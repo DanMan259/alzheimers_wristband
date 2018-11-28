@@ -11,7 +11,7 @@ Meteor.startup(() => {
     async function locationRequest (callback){
         try {
             //let result = await HTTP.call('GET', 'http://192.168.0.100/', );
-            let result = await HTTP.call('GET', 'http://192.168.1.27/', );
+            let result = await HTTP.call('GET', 'http://192.168.0.100/', );
             console.log(result);
             Patients.upsert({"PatientID":result.content.patient},{$set:JSON.parse(result.content)});
         }catch (e){

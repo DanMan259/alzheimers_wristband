@@ -5,7 +5,6 @@
             {{> navigation}}
         </div>
         <div id="main" class="row">
-            {{PatientInfo}}
             {{> contents}}
         </div>
     </div>
@@ -15,11 +14,27 @@
 <template name="contents">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <div class="first-section">
-        <div class="container">
-            <input type="text" name="search" placeholder="Search..">
+    <div class="container">
+        <div class="row">
+            <h3>Choose a starting point</h3>
+            {{#if clicked}}
+                <form class="form-radius">
+                    <h5>Radius for the Perimeter</h5>
+                    <p class="range-field">
+                        <input type="range" id="radius" min="10" max="200" />
+                    </p>
+                    <button type="submit" class="register">Submit</button>
+                </form>
+                <br><br>
+                {{> map}}
+                <br><br>
+                {{> patientInfo}}
+            {{else}}
+                <br><br>
+                {{> map}}
+                <br><br>
+                {{> patientInfo}}
+            {{/if}}
         </div>
     </div>
-    <br><br>
-    {{> map}}
 </template>
